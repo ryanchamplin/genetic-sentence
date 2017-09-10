@@ -2,9 +2,13 @@ import java.util.Random;
 
 public class DNA {
 	
+	// random stuff.
+	// pretty much useless tho.
+	// besides helping it work.
+	// semantics. 
 	char[] genes;
 	double fitness;
-	String alphabet = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+=- '\"\\";
+	String alphabet="0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+=- '\"\\";
 	Random r = new Random();
 	int n = alphabet.length();
 	
@@ -29,7 +33,8 @@ public class DNA {
 				score++;
 			}
 		}
-		fitness = Math.pow(2, score); // Is a power to normalize the score. allows for more factors if needed.
+		fitness = Math.pow(2, score); // Is a power to normalize the score.
+		//allows for more factors if needed.
 	}
 	
 	
@@ -47,6 +52,8 @@ public class DNA {
 		return child;
 	}
 	
+	// Allows for some mutation and keeps from getting stuck on a local maximum.
+	// Also allows for forward progress if it gets stuck.
 	void mutation(float mutateRate){
 		for(int i=0; i<genes.length; i++){
 			if(r.nextInt(1) < mutateRate){
